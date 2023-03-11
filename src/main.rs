@@ -17,6 +17,12 @@ fn main(){
   println!("txt[\"ra\"]: {}", txt["ra"]);
   println!("txt[\"rb\"]: {}", txt["rb"]);
   println!("txt[\"rc\"]: {}", txt["rc"]);
+  println!("typeof txt[\"rc\"]: {}", type_of(&txt["rc"]));
+
+  // うまく行かない
+  //let mut rc = deserialize_i32(txt["rc"]);
+  //println!("rc: {}", rc);
+  //rc = rc + 1;
 
   let k = json!({
     "ra": " ra ",
