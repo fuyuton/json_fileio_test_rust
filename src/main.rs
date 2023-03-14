@@ -15,6 +15,7 @@ struct HashFile {
 }
 
 
+//[Rustで変数の型を調べる方法 | 非IT企業に勤める中年サラリーマンのIT日記](http://pineplanter.moo.jp/non-it-salaryman/2020/01/16/rust-typeof/)
 
 fn type_of<T>(_: T) -> String{
   let a = std::any::type_name::<T>();
@@ -60,6 +61,14 @@ fn main(){
     */
   }
 
+  std::fs::write(
+      output_path,
+      serde_json::to_string_pretty(&de).unwrap(),
+  )
+  .unwrap();
+
+
+
   //let text = std::fs::read_to_string(&input_path).unwrap();
 
 
@@ -85,6 +94,7 @@ fn main(){
   println!("typeof hash[\"rc\"]: {:?}", type_of(&hash["rc"]));
 */
 
+/*
   let k = json!({
     "ra": " ra ",
     "rb": "is not ruby",
@@ -104,5 +114,6 @@ fn main(){
       serde_json::to_string_pretty(&k).unwrap(),
   )
   .unwrap();
+*/
 
 }
