@@ -1,5 +1,5 @@
 //use serde_json::{json, Value, Result};
-use serde_json::json;
+//use serde_json::json;
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 use std::fs::File;
@@ -42,9 +42,13 @@ fn main(){
   let reader = BufReader::new(file);
   let de: HashFile = serde_json::from_reader(reader).unwrap();
 
+  let mut json_str_hash = HashMap::new();
+  let mut json_int_hash = HashMap::new();
+
   for (key, value) in de.string_data.iter(){
     print!("{}\t", key);
     print!("{}\n", value);
+    json_str_hash.insert(key, value);
     /*
     for (k, v) in value.chars(){
       print!("{} {}\n", k, v);
@@ -54,6 +58,7 @@ fn main(){
   for (key, value) in de.integer_data.iter(){
     print!("{}\t", key);
     print!("{}\n", value);
+    json_int_hash.insert(key, value);
     /*
     for (k, v) in value{
       print!("{} {}\n", k, v);
@@ -68,7 +73,22 @@ fn main(){
   .unwrap();
 
 
+  println!("typeof hash: {}", type_of(&json_str_hash));
+  println!("typeof hash: {}", type_of(&json_int_hash));
+  for (key, value) in &json_str_hash {
+    print!("{}\t{}\n", key, value);
+  }
 
+  for (key, value) in &json_int_hash {
+    print!("{}\t{}\n", key, value);
+  }
+
+/*
+struct HashFile {
+  string_data: HashMap <String, String>,
+  integer_data: HashMap <String, i32>
+}
+*/
   //let text = std::fs::read_to_string(&input_path).unwrap();
 
 
